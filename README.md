@@ -166,8 +166,8 @@ llama.cpp flags required.
                          │                                    │
                          ▼                                    ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  libphantom_preload.so (this project)                        │
-│                                                               │
+│  libphantom_preload.so (this project)                       │
+│                                                             │
 │    ┌──────────────┐  ┌────────────────┐  ┌──────────────┐   │
 │    │ GGUF parser  │  │  1 GB initial  │  │  Background  │   │
 │    │              │  │     burst      │  │  prefetcher  │   │
@@ -176,21 +176,21 @@ llama.cpp flags required.
 │    │ byte ranges  │  │ during         │  │ mincore(),   │   │
 │    │              │  │ metadata load  │  │ advances     │   │
 │    └──────┬───────┘  └────────────────┘  │ frontier,    │   │
-│           │                               │ layer-aware  │   │
-│           └───────── layer map ──────────►│ readahead()  │   │
-│                                           └──────┬───────┘   │
+│           │                               │ layer-aware │   │
+│           └───────── layer map ──────────►│ readahead() │   │
+│                                           └──────┬──────┘   │
 └──────────────────────────────────────────────────┼──────────┘
                                                     │
                          readahead() syscalls       │
                                                     ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  Linux kernel page cache (the buffer pool — not ours)        │
-│    Pages get filled from NVMe ahead of llama.cpp's reads.    │
+│  Linux kernel page cache (the buffer pool — not ours)       │
+│    Pages get filled from NVMe ahead of llama.cpp's reads.   │
 └─────────────────────────────────────────────────────────────┘
                                                     │
                                                     ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  NVMe SSD                                                    │
+│  NVMe SSD                                                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
