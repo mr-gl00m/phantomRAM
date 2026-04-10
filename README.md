@@ -253,7 +253,7 @@ The extra RAM isn't really there... it's a goddamn phantom.
 
 ## Support
 
-SIGIL is free and public domain (CC0).
+SIGIL is free.
 
 If you find this useful, consider supporting development:
 
